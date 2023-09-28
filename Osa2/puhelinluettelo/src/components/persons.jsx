@@ -1,3 +1,5 @@
+import Person from './person.jsx'
+
 const Persons = ({persons, filterName}) => {
     
     const filteredPersons = persons.filter((person) =>
@@ -7,7 +9,7 @@ const Persons = ({persons, filterName}) => {
     return(
         <div>
         {filteredPersons.map((person, index) => (
-            <p key={index}>{person.name} {person.number}</p>
+            <Person key={index} person={person}/>
           ))}
         </div>
     )
