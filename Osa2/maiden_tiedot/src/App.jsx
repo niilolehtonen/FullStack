@@ -19,7 +19,7 @@ function App() {
         setCountries(countries)
       })
   },[])
-
+  
   return (
     <div>
       <Filter filter={filterCountry} change={handleFilterChange}/>

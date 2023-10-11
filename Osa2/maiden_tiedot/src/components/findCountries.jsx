@@ -12,7 +12,6 @@ const FindCountries = ({ countries, filterCountry, setFilter }) => {
 
 
   const handleShowClick = (country) => {
-    console.log(country)
     setFilter(country.name.common)
   }
 
@@ -41,4 +40,4 @@ const FindCountries = ({ countries, filterCountry, setFilter }) => {
   }
 }
 
-export default FindCountries;
+export default FindCountries
