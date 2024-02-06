@@ -66,6 +66,27 @@ describe("likeField", () =>
     expect(blog.likes).toBe(0);
   }));
 
+describe("post is responding correctly", () => {
+  test("when the blog doesn't include a title field", async () => {
+    const newBlog = {
+      author: "niilo lehtonen",
+      url: "www.fs.fi",
+      likes: 1,
+    };
+
+    await api.post("/api/blogs").send(newBlog).expect(400);
+  });
+  test("when the blog doesn't include a title field", async () => {
+    const newBlog = {
+      title: "fullstack",
+      author: "niilo lehtonen",
+      likes: 1,
+    };
+
+    await api.post("/api/blogs").send(newBlog).expect(400);
+  });
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
