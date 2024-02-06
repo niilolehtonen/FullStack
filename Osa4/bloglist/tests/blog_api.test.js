@@ -104,6 +104,20 @@ describe("delete method", () => {
   });
 });
 
+describe("put method", () => {
+  test("works correctly", async () => {
+    const blogsAtStart = await helper.blogsInDb();
+    const blogToEdit = blogsAtStart[0];
+    const blogEdited = { ...blogToEdit, likes: 8 };
+
+    await api.put(`/api/blogs/${blogToEdit.id}`).send(blogEdited).expect(200);
+
+    const blogsAtEnd = await helper.blogsInDb();
+
+    expect(blogsAtEnd[0].likes).toBe(8);
+  });
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
