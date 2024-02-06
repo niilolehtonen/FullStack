@@ -23,6 +23,29 @@ describe("get method", () => {
   });
 });
 
+describe("post method", () => {
+  test("adds blogs correctly to db", async () => {
+    const newBlog = {
+      title: "fullstack",
+      author: "niilo lehtonen",
+      url: "www.fs.fi",
+      likes: 8,
+    };
+
+    await api
+      .post("/api/blogs")
+      .send(newBlog)
+      .expect(201)
+      .expect("Content-Type", /application\/json/);
+
+    const blogsAtEnd = await helper.blogsInDb();
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1);
+
+    const titles = blogsAtEnd.map((b) => b.title);
+    expect(titles).toContain("fullstack");
+  });
+});
+
 afterAll(async () => {
   await mongoose.connection.close();
 });
