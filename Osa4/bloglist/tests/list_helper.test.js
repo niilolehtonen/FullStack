@@ -120,6 +120,14 @@ describe("favoriteBlog", () => {
       likes: 7,
       __v: 0,
     },
+    {
+      _id: "5a422b891b56795797579555",
+      title: "First c",
+      author: "Robert C. Martin",
+      url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+      likes: 7,
+      __v: 0,
+    },
   ];
   const mostLiked = {
     _id: "5a422a851b54a676234d17f7",
@@ -136,5 +144,48 @@ describe("favoriteBlog", () => {
   test("is correct when there is many blogs with most likes", () => {
     const result = listHelper.favoriteBlog(blogs2);
     expect(result.likes).toEqual(mostLiked.likes);
+  });
+});
+
+describe("author with most blogs & likes", () => {
+  const blogs2 = [
+    {
+      _id: "5a422b891b54a676234d17fa",
+      title: "First class tests",
+      author: "Robert C. Martin",
+      url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+      likes: 7,
+      __v: 0,
+    },
+    {
+      _id: "5a422aa71b54a676234d17f8",
+      title: "Go To Statement Considered Harmful",
+      author: "Edsger W. Dijkstra",
+      url: "http://www.u.arizona.edu/~rubinson/copyright_violations/Go_To_Considered_Harmful.html",
+      likes: 8,
+      __v: 0,
+    },
+    {
+      _id: "5a422b891b56795797579555",
+      title: "First c",
+      author: "Robert C. Martin",
+      url: "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+      likes: 10,
+      __v: 0,
+    },
+  ];
+  test("the author with most blogs", () => {
+    const result = listHelper.mostBlogs(blogs2);
+    expect(result).toEqual({
+      author: "Robert C. Martin",
+      blogs: 2,
+    });
+  });
+  test("the author with most likes", () => {
+    const result = listHelper.mostLikes(blogs2);
+    expect(result).toEqual({
+      author: "Robert C. Martin",
+      likes: 17,
+    });
   });
 });
