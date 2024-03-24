@@ -2,7 +2,7 @@ import { useState } from 'react'
 import PropTypes from 'prop-types'
 
 const Blog = ({ blog, handleLike, handleDelete, username }) => {
-  const [showBlogInfo,setShowBlogInfo] = useState(false)
+  const [showBlogInfo, setShowBlogInfo] = useState(false)
 
   const changeVisibility = () => {
     setShowBlogInfo(!showBlogInfo)
@@ -15,30 +15,32 @@ const Blog = ({ blog, handleLike, handleDelete, username }) => {
     paddingLeft: 2,
     border: 'solid',
     borderWidth: 1,
-    marginBottom: 5
+    marginBottom: 5,
   }
 
   if (!showBlogInfo) {
-    return(
+    return (
       <div style={blogStyle}>
         {blog.title} {blog.author}
         <button onClick={changeVisibility}>view</button>
       </div>
     )
   } else {
-    return(
+    return (
       <div style={blogStyle}>
         {blog.title} {blog.author}
         <button onClick={changeVisibility}>hide</button>
-        <br/>
+        <br />
         {blog.url}
-        <br/>
+        <br />
         {blog.likes}
         <button onClick={() => handleLike(blog)}>like</button>
-        <br/>
+        <br />
         {blog.user.name}
-        <br/>
-        {isCreator && <button onClick={() => handleDelete(blog)}>remove</button>}
+        <br />
+        {isCreator && (
+          <button onClick={() => handleDelete(blog)}>remove</button>
+        )}
       </div>
     )
   }
@@ -48,7 +50,7 @@ Blog.propTypes = {
   blog: PropTypes.object.isRequired,
   handleLike: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired
+  username: PropTypes.string.isRequired,
 }
 
 export default Blog

@@ -7,53 +7,56 @@ const BlogForm = ({ createBlog }) => {
   const [url, setUrl] = useState('')
 
   const addBlog = async (event) => {
-    event.preventdefault()
+    event.preventDefault()
     createBlog({
       title: title,
       author: author,
-      url: url
+      url: url,
     })
     setTitle('')
     setAuthor('')
     setUrl('')
   }
 
-  return(
+  return (
     <form onSubmit={addBlog}>
       <div>
-          title
+        title
         <input
-          type="text"
+          type='text'
           value={title}
-          name="Title"
+          name='Title'
           onChange={({ target }) => setTitle(target.value)}
+          placeholder='title'
         />
       </div>
       <div>
-          author
+        author
         <input
-          type="text"
+          type='text'
           value={author}
-          name="Author"
+          name='Author'
           onChange={({ target }) => setAuthor(target.value)}
+          placeholder='author'
         />
       </div>
       <div>
-          url
+        url
         <input
-          type="text"
+          type='text'
           value={url}
-          name="Url"
+          name='Url'
           onChange={({ target }) => setUrl(target.value)}
+          placeholder='url'
         />
       </div>
-      <button type="submit">create</button>
+      <button type='submit'>create</button>
     </form>
   )
 }
 
 BlogForm.propTypes = {
-  createBlog: PropTypes.func.isRequired
+  createBlog: PropTypes.func.isRequired,
 }
 
 export default BlogForm

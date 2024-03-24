@@ -1,25 +1,33 @@
-const loginForm = ({ handleLogin, username, password, setUsername, setPassword }) => {
+const loginForm = ({
+  handleLogin,
+  username,
+  password,
+  setUsername,
+  setPassword,
+}) => {
   return (
     <form onSubmit={handleLogin}>
       <div>
-          username
+        username
         <input
-          type="text"
+          data-testid='username'
+          type='text'
           value={username}
-          name="Username"
+          name='Username'
           onChange={({ target }) => setUsername(target.value)}
         />
       </div>
       <div>
-          password
+        password
         <input
-          type="password"
+          data-testid='password'
+          type='password'
           value={password}
-          name="Password"
+          name='Password'
           onChange={({ target }) => setPassword(target.value)}
         />
       </div>
-      <button type="submit">login</button>
+      <button type='submit'>login</button>
     </form>
   )
 }
